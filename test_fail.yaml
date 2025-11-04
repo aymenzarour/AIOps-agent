@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: test-pod-fail
+spec:
+  containers:
+  - name: container-en-echec
+    image: aymenzarour/image-qui-nexiste-pas:1.2.3

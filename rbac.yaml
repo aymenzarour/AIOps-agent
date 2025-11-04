@@ -1,0 +1,31 @@
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: ai-agent-sa 
+  namespace: default 
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: ai-agent-cluster-role
+rules:
+- apiGroups: [""] 
+  resources: ["events", "pods", "namespaces"] 
+  verbs: ["get", "list", "watch"] 
+- apiGroups: ["apps"]
+  resources: ["deployments", "statefulsets", "replicasets"]
+  verbs: ["get", "list", "watch"]
+
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: ai-agent-binding
+subjects:
+- kind: ServiceAccount
+  name: ai-agent-sa 
+  namespace: default 
+roleRef:
+  kind: ClusterRole
+  name: ai-agent-cluster-role 
+  apiGroup: rbac.authorization.k8s.io

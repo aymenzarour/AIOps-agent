@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: k3s-ai-agent
+  labels:
+    app: ai-agent
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ai-agent
+  template:
+    metadata:
+      labels:
+        app: ai-agent
+    spec:
+      serviceAccountName: ai-agent-sa 
+      
+      containers:
+      - name: agent
+        image: aymenzarour/ai-agent:v7
+        
+        envFrom:
+        - secretRef:
+            name: ai-agent-secrets 
+        
+        
+        env:
+        - name: PYTHONUNBUFFERED
+          value: "1"
