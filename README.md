@@ -162,4 +162,4 @@ kubectl delete pod test-pod-fail
 ---
 
 ✅ **Result:**  
-You now have an AI-powered monitoring agent that makes your **K3s cluster smarter**, giving you meaningful alerts directly on Telegram — powered by **Google Gemini**.
+You now have an AI-powered monitoring agent that makes your **K3s cluster smarter**, giving you meaningful alerts directly on Telegram.
